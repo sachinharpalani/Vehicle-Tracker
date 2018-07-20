@@ -22,6 +22,12 @@ def index(request):
     })
 
 def report_details(request,report_id):
-    report_details = utils.get_report_details(report_id)
-    summary = utils.get_summary(report_id)
-    return render(request,'report.html',{"report_details" : report_details,"summary":summary})
+    if request.method == "GET":
+        report_details = utils.get_report_details(report_id)
+        summary = utils.get_summary(report_id)
+        return render(request,'report.html',{"report_details" : report_details,"summary":summary})
+
+def history(request):
+    if request.method == "GET":
+        history = utils.get_history()
+        return render(request,'history.html',{"history" : history})

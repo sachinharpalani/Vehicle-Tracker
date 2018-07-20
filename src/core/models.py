@@ -1,6 +1,7 @@
 from django.db import models
 from jsonfield import JSONField
 import os
+from django.urls import reverse_lazy
 
 # Create your models here.
 
@@ -13,6 +14,9 @@ class Report(models.Model):
 
     def fileurl(self):
         return self.xml_file.url
+
+    def go_to_report(self):
+        return '/report/'+ str(self.id)
 
 
 class Vehicle(models.Model):

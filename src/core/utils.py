@@ -41,5 +41,6 @@ def get_report_details(report_id):
     vehicles = list(Vehicle.objects.filter(report=report_id))
     return vehicles
 
-
-print(get_summary(12))
+def get_history():
+    reports = list(Report.objects.all().order_by('-timestamp'))
+    return reports
