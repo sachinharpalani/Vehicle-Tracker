@@ -36,5 +36,7 @@ class Vehicle(models.Model):
         all_m = {m["material"] for m in self.wheels}
         all_m = ' '.join(map(str,all_m))
         all_w = ','.join(map(lambda x: x["position"],self.wheels))
-        wheels_text = "{no} {material} ({positions})".format(no=str(len(self.wheels)),material=str(all_m),positions=all_w)
+        wheels_text = "{no} {material} ".format(no=str(len(self.wheels)),material=str(all_m))
+        if all_w:
+            wheels_text += "({position})".format(position=all_w)
         return wheels_text

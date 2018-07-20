@@ -2,10 +2,13 @@
 
 {% block content %}
 
-<div class="list-group">
+<div class="w3-container" style="padding:78px 16px">
+<h2 style="text-align:center">Uploaded XML Files</h2>
+<ul class="w3-ul w3-card-4">
     {% for report in history %}
-    <a href="{{report.go_to_report}}" class="list-group-item list-group-item-action">{{report.filename}} uploaded {{report.timestamp|timesince}} ago</a>
+    <li class="w3-display-container" style="padding:5px 5px"><p class="w3-display-center"> {{report.filename}}</p><p class="w3-display-center">{{report.timestamp|timesince}} ago</p><a href="{{report.go_to_report}}"><button class="w3-button w3-teal w3-display-right">View</button></a></li>
     {% endfor %}
+</ul>
 </div>
 
 {% endblock content %}

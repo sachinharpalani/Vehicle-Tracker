@@ -17,7 +17,7 @@ def index(request):
             return redirect('details',report_id=form.instance.id)
     else:
         form = UploadReportForm()
-    return render(request, 'upload.html', {
+    return render(request, 'index.html', {
         'form': form
     })
 
