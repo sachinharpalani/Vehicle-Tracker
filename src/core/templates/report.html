@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Type</th>
+            <th scope="col">Frame</th>
+            <th scope="col">Power Train</th>
+            <th scope="col">Wheels</th>
+            <th scope="col">Timestamp</th>
+            <th scope="col">File Link</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for report in report_details %}
+        <tr>
+            <th scope="row">{{ report.id }}</th>
+            <td>{{ report.type }}</td>
+            <td>{{ report.frame }}</td>
+            <td>{{ report.power_train }}</td>
+            <td>{{ report.wheels }}</td>
+            <td> report timestamp</td>
+            <td> report link </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}

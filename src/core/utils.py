@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
-from .models import Vehicle
+from .models import Vehicle,Report
+from collections import Counter
 
 def get_type_by_properties(wheels,power_train):
     no_of_wheels = len(wheels)
@@ -12,8 +13,8 @@ def get_type_by_properties(wheels,power_train):
     return type
 
 
-def parse_xml_to_db(file_name):
-    tree = ET.parse(file_name)
+def parse_xml_to_db(report_object):
+    tree = ET.parse(report_object.xml_file)
     root = tree.getroot()
 
     all_vehicles = root.findall('vehicle')
@@ -27,4 +28,16 @@ def parse_xml_to_db(file_name):
             position = w.find('position').text
             wheels.append({"material":material,"position":position})
         vehicle_type = get_type_by_properties(wheels,power_train)
-        Vehicle.objects.create(type=vehicle_type,frame=frame,power_train=power_train,wheels=wheels)
+        Vehicle.objects.create(type=vehicle_type,frame=frame,power_train=power_train,wheels=wheels,report=report_object)
+
+def get_summary():
+    vehicle_types = [v.type for v in Vehicle.objects.all()]
+    c = dict(Counter(vehicle_types))
+    c.update({"Total": len(vehicle_types)})
+    print(type(c),c)
+
+def get_report_details(report_id):
+    vehicles = list(Vehicle.objects.filter(report=report_id))
+    return vehicles
+
+print(get_report_details(12))
