@@ -20,9 +20,9 @@
             <td>{{ report.type }}</td>
             <td>{{ report.frame }}</td>
             <td>{{ report.power_train }}</td>
-            <td>{{ report.wheels }}</td>
-            <td> report timestamp</td>
-            <td> report link </td>
+            <td>{{ report.get_wheels_text }}</td>
+            <td> {{ report.report.timestamp }}</td>
+            <td><a href="{{ report.report.fileurl }}">{{ report.report.filename}}</a></td>
         </tr>
         {% endfor %}
     </tbody>

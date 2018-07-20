@@ -39,5 +39,3 @@ def get_summary():
 def get_report_details(report_id):
     vehicles = list(Vehicle.objects.filter(report=report_id))
     return vehicles
-
-print(get_report_details(12))
