@@ -30,12 +30,16 @@ def parse_xml_to_db(report_object):
         vehicle_type = get_type_by_properties(wheels,power_train)
         Vehicle.objects.create(type=vehicle_type,frame=frame,power_train=power_train,wheels=wheels,report=report_object)
 
-def get_summary():
-    vehicle_types = [v.type for v in Vehicle.objects.all()]
+def get_summary(report_id):
+    vehicle_types = [v.type for v in Vehicle.objects.filter(report=report_id)]
     c = dict(Counter(vehicle_types))
-    c.update({"Total": len(vehicle_types)})
-    print(type(c),c)
+    summ=[[key,value] for key,value in zip(c.keys(),c.values())]
+    summ.insert(0,['Vehicle Type','No of Vehicles'])
+    return summ
 
 def get_report_details(report_id):
     vehicles = list(Vehicle.objects.filter(report=report_id))
     return vehicles
+
+
+print(get_summary(12))

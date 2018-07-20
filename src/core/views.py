@@ -4,7 +4,7 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from . import utils
 from .forms import UploadReportForm
-
+import json
 
 # Create your views here.
 
@@ -23,4 +23,5 @@ def index(request):
 
 def report_details(request,report_id):
     report_details = utils.get_report_details(report_id)
-    return render(request,'report.html',{"report_details" : report_details})
+    summary = utils.get_summary(report_id)
+    return render(request,'report.html',{"report_details" : report_details,"summary":summary})
