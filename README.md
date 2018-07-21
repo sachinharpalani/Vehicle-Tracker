@@ -2,21 +2,11 @@
 
 Vehicle Tracker takes your data, determines your vehicle type and displays summary of your data in an elegant pie chart.
 
-  - Type some Markdown on the left
-  - See HTML in the right
-  - Magic
-
 # Features!
 
   - Import a XML file and watch it magically convert to relevant data
   - Summary of all the vehicles in your data
   - History of your uploaded files so you can view them anytime.
-
-
-You can also:
-  - Import and save files from GitHub, Dropbox, Google Drive and One Drive
-  - Drag and drop markdown and HTML files into Dillinger
-  - Export documents as Markdown, HTML and PDF
 
 ### Tech
 
